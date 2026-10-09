@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Undangan Soft Opening PEGASUS x Nasi Tekor Tampaksiring. Rabu, 14 Oktober 2026, 19.00 - 22.00 WITA, PEGASUS Gallery, Tampaksiring, Bali. Live music.">
+<meta name="description" content="Undangan Soft Opening PEGASUS x Nasi Tekor Tampaksiring. Rabu, 14 Oktober 2026, 11.00 - 22.00 WITA, PEGASUS Gallery, Tampaksiring, Bali. Live music.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Soft Opening PEGASUS x Nasi Tekor Tampaksiring">
-<meta property="og:description" content="Undangan Soft Opening PEGASUS x Nasi Tekor Tampaksiring. Rabu, 14 Oktober 2026, 19.00 - 22.00 WITA, PEGASUS Gallery, Tampaksiring, Bali. Live music.">
+<meta property="og:description" content="Undangan Soft Opening PEGASUS x Nasi Tekor Tampaksiring. Rabu, 14 Oktober 2026, 11.00 - 22.00 WITA, PEGASUS Gallery, Tampaksiring, Bali. Live music.">
 <style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Soft Opening Pegasus Nasi Tekor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -148,7 +148,8 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 
 /* Bambu dan daun */
 .bamboo {
-  position: absolute; top: 0; bottom: 0; width: 14px; pointer-events: none;
+  position: absolute; top: -140px; bottom: -140px; width: 14px; pointer-events: none;
+  transform: translateY(calc(var(--sy, 0) * .16px));
   background:
     repeating-linear-gradient(to bottom, transparent 0 150px, rgba(0,0,0,.38) 150px 153px, rgba(255,255,255,.14) 153px 155px),
     linear-gradient(90deg, var(--bam-1), var(--bam-2) 45%, var(--bam-1));
@@ -159,8 +160,8 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 .bamboo.b3 { right: 12px; }
 .bamboo.b4 { right: 34px; width: 9px; top: 30%; opacity: .55; }
 .leaf-wrap { position: absolute; top: 0; width: min(60vw, 400px); aspect-ratio: 1; pointer-events: none; }
-.leaf-wrap.tl { left: 0; }
-.leaf-wrap.tr { right: 0; transform: scaleX(-1); }
+.leaf-wrap.tl { left: 0; transform: translateY(calc(var(--sy, 0) * .1px)); }
+.leaf-wrap.tr { right: 0; transform: translateY(calc(var(--sy, 0) * .1px)) scaleX(-1); }
 .leaves { width: 100%; height: 100%; transform-origin: 0 0; animation: sway 9s ease-in-out infinite alternate; }
 .leaf-wrap.tr .leaves { animation-duration: 11s; }
 @keyframes sway { from { transform: rotate(-1.2deg); } to { transform: rotate(1.4deg); } }
@@ -175,8 +176,8 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 .door-l { left: 0; }
 .door-r { right: 0; }
 .tower {
-  position: absolute; bottom: 0; width: min(40vw, 300px); height: 52%;
-  background: var(--green2);
+  position: absolute; bottom: 0; width: min(40vw, 300px); height: 40%;
+  background: var(--green2); opacity: .55;
   clip-path: polygon(0 100%, 0 64%, 12% 64%, 12% 50%, 25% 50%, 25% 38%, 38% 38%, 38% 27%, 52% 27%, 52% 18%, 66% 18%, 66% 9%, 82% 9%, 82% 0, 100% 0, 100% 100%);
 }
 .door-l .tower { right: 0; }
@@ -226,6 +227,8 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 .hero h1 .t2 { font: 600 clamp(3.4rem, 14vw, 8.5rem)/1 var(--font-display); letter-spacing: .08em; padding-left: .08em; }
 .hero h1 .t3 { font: 500 clamp(.7rem, 2.4vw, 1rem)/1.6 var(--font-body); letter-spacing: .34em; text-transform: uppercase; padding-left: .34em; }
 .hero-date { font: italic 500 clamp(1.5rem, 4vw, 2.2rem)/1.2 var(--font-display); color: var(--gold-soft); margin-top: .4rem; }
+.hero-meta .nw { display: inline-block; }
+@media (max-width: 520px) { .hero-meta .nw { display: block; } .hero-meta .dot { display: none; } }
 .hero-meta { font: 500 .8rem/1.6 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: var(--on-green-soft); }
 .hero .btn { margin-top: 1rem; }
 
@@ -267,7 +270,7 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 .venue address { font-style: normal; color: var(--ink-soft); font-size: .95rem; max-width: 34em; }
 .venue .acts { display: grid; gap: .7rem; }
 
-/* Malam yang menanti */
+/* Hari yang menanti */
 .hl { background: var(--bg2); }
 .hl-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .hl-item { padding: .4rem clamp(1.2rem, 3vw, 2.2rem); border-left: 1px solid var(--line); display: grid; gap: .7rem; align-content: start; }
@@ -339,6 +342,56 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
 }
+
+/* Animasi */
+html.smooth { scroll-behavior: auto; }
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 90; pointer-events: none;
+  background: linear-gradient(90deg, var(--wood), var(--gold-soft));
+  transform-origin: 0 50%; transform: scaleX(var(--p, 0));
+}
+.dust { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes flip { from { opacity: .3; transform: translateY(-16%); } to { opacity: 1; transform: none; } }
+@keyframes shimmer { from { background-position: 0 0; } to { background-position: 36px 0; } }
+
+.cover-inner > * { animation: rise 1s cubic-bezier(.2, .7, .2, 1) both; }
+.cover-inner > :nth-child(1) { animation-delay: .15s; }
+.cover-inner > :nth-child(2) { animation-delay: .3s; }
+.cover-inner > :nth-child(3) { animation-delay: .45s; }
+.cover-inner > :nth-child(4) { animation-delay: .65s; }
+.cover-inner > :nth-child(5) { animation-delay: .85s; }
+
+html.js .hero:not(.play) .hero-inner > * { opacity: 0; }
+.hero.play .hero-inner > * { animation: rise 1.1s cubic-bezier(.2, .7, .2, 1) both; }
+.hero.play .hero-inner > :nth-child(1) { animation-delay: .55s; }
+.hero.play .hero-inner > :nth-child(2) { animation-delay: .7s; }
+.hero.play .hero-inner > :nth-child(3) { animation-delay: .85s; }
+.hero.play .hero-inner > :nth-child(4) { animation-delay: 1.15s; }
+.hero.play .hero-inner > :nth-child(5) { animation-delay: 1.3s; }
+.hero.play .hero-inner > :nth-child(6) { animation-delay: 1.45s; }
+.hero.play .hero-inner > :nth-child(7) { animation-delay: 1.6s; }
+.hero.play .hero-inner > :nth-child(8) { animation-delay: 1.75s; }
+
+html.js .rv {
+  opacity: .2; transform: translateY(30px);
+  transition: opacity .9s ease, transform 1s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--d, 0ms);
+}
+html.js .rv.in { opacity: 1; transform: none; }
+html.js .hl-item.in svg > * { stroke-dashoffset: 0 !important; transition: stroke-dashoffset 1.5s ease .3s; }
+
+.num.flip { animation: flip .5s ease; }
+.band { animation: shimmer 4s linear infinite; }
+.btn { transition: background .25s, color .25s, border-color .25s, transform .25s, box-shadow .25s; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -12px rgba(0, 0, 0, .55); }
+.btn:active { transform: translateY(0); }
+.venue { transition: transform .4s ease, box-shadow .4s ease; }
+.venue:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.hl-item svg { transition: transform .5s ease; }
+.hl-item:hover svg { transform: translateY(-4px) rotate(-4deg); }
+.row { transition: padding-left .35s ease; }
+.row:hover { padding-left: .6rem; }
 </style>
 </head>
 <body>
@@ -360,6 +413,8 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
     </symbol>
   </defs>
 </svg>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <!-- Sampul gerbang -->
 <div class="cover on-green" id="cover" role="dialog" aria-modal="true" aria-labelledby="cover-title">
@@ -383,6 +438,7 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 
 <!-- Hero -->
 <header class="hero on-green" id="atas">
+  <canvas class="dust" id="dust" aria-hidden="true"></canvas>
   <i class="bamboo b1"></i><i class="bamboo b2"></i><i class="bamboo b3"></i><i class="bamboo b4"></i>
   <div class="leaf-wrap tl" aria-hidden="true">
     <svg class="leaves" viewBox="0 0 400 400">
@@ -411,7 +467,7 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
     </h1>
     <svg class="orn" viewBox="0 0 240 24" aria-hidden="true"><use href="#orn"/></svg>
     <p class="hero-date">Rabu, 14 Oktober 2026</p>
-    <p class="hero-meta">19.00 – 22.00 WITA &nbsp;·&nbsp; PEGASUS Gallery</p>
+    <p class="hero-meta"><span class="nw">11.00 – 22.00 WITA</span><span class="dot"> &nbsp;·&nbsp; </span><span class="nw">PEGASUS Gallery</span></p>
     <p class="hero-meta">Diiringi Live Music</p>
     <a class="btn btn-light" href="#rsvp">Konfirmasi Kehadiran</a>
   </div>
@@ -432,14 +488,14 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
   <section class="count on-green" aria-labelledby="count-title">
     <div class="band" aria-hidden="true"></div>
     <div class="wrap inner">
-      <p class="eyebrow" id="count-title">Menuju malam pembukaan</p>
+      <p class="eyebrow" id="count-title">Menuju hari pembukaan</p>
       <div class="count-grid" role="timer" aria-live="off">
         <div class="cell"><span class="num" id="c-d">00</span><span class="lab">Hari</span></div>
         <div class="cell"><span class="num" id="c-h">00</span><span class="lab">Jam</span></div>
         <div class="cell"><span class="num" id="c-m">00</span><span class="lab">Menit</span></div>
         <div class="cell"><span class="num" id="c-s">00</span><span class="lab">Detik</span></div>
       </div>
-      <p class="count-status" id="c-status">Sampai jumpa pada 14 Oktober 2026, pukul 19.00 WITA.</p>
+      <p class="count-status" id="c-status">Sampai jumpa pada 14 Oktober 2026, pukul 11.00 WITA.</p>
     </div>
     <div class="band" aria-hidden="true"></div>
   </section>
@@ -449,7 +505,7 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
     <div class="wrap">
       <header class="sec-head">
         <p class="eyebrow">Detail Acara</p>
-        <h2 class="sec-title">Satu malam di Tampaksiring</h2>
+        <h2 class="sec-title">Satu hari di Tampaksiring</h2>
       </header>
       <div class="detail-grid">
         <div class="plaque">
@@ -458,7 +514,7 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
           <span class="bln">Oktober 2026</span>
         </div>
         <dl class="rows">
-          <div class="row"><dt>Waktu</dt><dd>19.00 – 22.00 WITA</dd></div>
+          <div class="row"><dt>Waktu</dt><dd>11.00 – 22.00 WITA</dd></div>
           <div class="row"><dt>Hiburan</dt><dd>Live Music</dd></div>
           <div class="row"><dt>Tamu</dt><dd>Umum</dd></div>
           <div class="row"><dt>Dress code</dt><dd>No Dress Code</dd></div>
@@ -479,23 +535,23 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
     </div>
   </section>
 
-  <!-- Malam yang menanti -->
+  <!-- Hari yang menanti -->
   <section class="sec hl">
     <div class="wrap">
       <header class="sec-head">
-        <p class="eyebrow">Malam yang Menanti</p>
+        <p class="eyebrow">Hari yang Menanti</p>
         <h2 class="sec-title">Hangat, sederhana, dan terbuka untuk semua</h2>
       </header>
       <div class="hl-grid">
         <article class="hl-item">
           <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 20h28a14 14 0 0 1-28 0z"/><path d="M14 33h12"/><path d="M15 14c0-3 3-3 3-6M22 14c0-3 3-3 3-6"/></svg>
           <h3>Cita rasa tradisi</h3>
-          <p>Hidangan nasi tradisional Bali, disiapkan hangat untuk malam pembukaan.</p>
+          <p>Hidangan nasi tradisional Bali, disiapkan hangat sepanjang hari pembukaan.</p>
         </article>
         <article class="hl-item">
           <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M16 29V9l16-4v20"/><circle cx="12" cy="29" r="4"/><circle cx="28" cy="25" r="4"/></svg>
           <h3>Live music</h3>
-          <p>Alunan musik langsung menemani malam pembukaan di PEGASUS Gallery.</p>
+          <p>Alunan musik langsung menemani hari pembukaan di PEGASUS Gallery.</p>
         </article>
         <article class="hl-item">
           <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="14" r="5"/><path d="M5 33c0-6 4-10 9-10s9 4 9 10"/><circle cx="28" cy="16" r="4"/><path d="M26 24c6-1 10 3 10 9"/></svg>
@@ -587,30 +643,37 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
     var p = new URLSearchParams({
       action: 'TEMPLATE',
       text: 'Soft Opening PEGASUS Nasi Tekor Tampak Siring',
-      dates: '20261014T110000Z/20261014T140000Z',
-      details: 'Soft Opening PEGASUS Nasi Tekor Tampak Siring. 19.00 - 22.00 WITA. Live music. No Dress Code.',
+      dates: '20261014T030000Z/20261014T140000Z',
+      details: 'Soft Opening PEGASUS Nasi Tekor Tampak Siring. 11.00 - 22.00 WITA. Live music. No Dress Code.',
       location: 'PEGASUS Gallery, Jl. Raya Tampaksiring, Tampaksiring, Kec. Tampaksiring, Kabupaten Gianyar, Bali 80552'
     });
     $('cal-link').href = 'https://calendar.google.com/calendar/render?' + p.toString();
   })();
 
   /* Hitung mundur (WITA = UTC+8) */
-  var START = new Date('2026-10-14T19:00:00+08:00').getTime();
+  var START = new Date('2026-10-14T11:00:00+08:00').getTime();
   var END = new Date('2026-10-14T22:00:00+08:00').getTime();
+  var started = false;
+  function setNum(id, v) {
+    var el = $(id);
+    if (el.textContent === v) return;
+    el.textContent = v;
+    if (started && !reduce) { el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); }
+  }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function tick() {
     var now = Date.now(), d = 0, h = 0, m = 0, s = 0, t;
     if (now < START) {
       t = Math.floor((START - now) / 1000);
       d = Math.floor(t / 86400); h = Math.floor(t % 86400 / 3600); m = Math.floor(t % 3600 / 60); s = t % 60;
-      $('c-status').textContent = 'Sampai jumpa pada 14 Oktober 2026, pukul 19.00 WITA.';
+      $('c-status').textContent = 'Sampai jumpa pada 14 Oktober 2026, pukul 11.00 WITA.';
     } else if (now < END) {
       $('c-status').textContent = 'Acara sedang berlangsung. Selamat datang di PEGASUS Gallery.';
     } else {
       $('c-status').textContent = 'Acara telah selesai. Suksma atas kehadiran Anda.';
     }
-    $('c-d').textContent = pad(d); $('c-h').textContent = pad(h);
-    $('c-m').textContent = pad(m); $('c-s').textContent = pad(s);
+    setNum('c-d', pad(d)); setNum('c-h', pad(h)); setNum('c-m', pad(m)); setNum('c-s', pad(s));
+    started = true;
   }
   tick(); setInterval(tick, 1000);
 
@@ -622,7 +685,7 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
   function compose() {
     var nama = elNama.value.trim() || '[nama Anda]';
     var st = status(), n = jml();
-    var acara = 'Soft Opening PEGASUS Nasi Tekor Tampak Siring (Rabu, 14 Oktober 2026, pukul 19.00–22.00 WITA, PEGASUS Gallery, Tampaksiring)';
+    var acara = 'Soft Opening PEGASUS Nasi Tekor Tampak Siring (Rabu, 14 Oktober 2026, pukul 11.00–22.00 WITA, PEGASUS Gallery, Tampaksiring)';
     var t = 'Om Swastyastu, saya ' + nama + '. ';
     if (st === 'hadir') t += 'Saya akan hadir pada ' + acara + '. Jumlah tamu: ' + n + ' orang.';
     else if (st === 'mungkin') t += 'Saya kemungkinan hadir pada ' + acara + '. Perkiraan jumlah tamu: ' + n + ' orang.';
@@ -691,6 +754,7 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
   function openGate() {
     if (cover.hidden) return;
     cover.classList.add('open');
+    $('atas').classList.add('play');
     if (reduce) finish(); else setTimeout(finish, 1700);
   }
   $('cover-form').addEventListener('submit', function (e) {
@@ -702,7 +766,148 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
     }
     openGate();
   });
-  if (location.hash && location.hash.length > 1) { cover.hidden = true; document.documentElement.classList.remove('lock'); }
+  if (location.hash && location.hash.length > 1) { cover.hidden = true; document.documentElement.classList.remove('lock'); $('atas').classList.add('play'); }
+
+
+  /* ===== Animasi ===== */
+  var root = document.documentElement;
+  var hero = $('atas');
+  if (!reduce) root.classList.add('js');
+
+  /* Muncul saat digulir */
+  var ioOk = 'IntersectionObserver' in window;
+  var countedUp = false;
+  function countUp(el) {
+    if (countedUp || reduce) return;
+    countedUp = true;
+    var to = 14, t0 = null;
+    el.textContent = '0';
+    (function f(t) {
+      if (t0 === null) t0 = t;
+      var k = Math.min((t - t0) / 1300, 1);
+      el.textContent = String(Math.round(to * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) requestAnimationFrame(f);
+    })(performance.now());
+  }
+  if (!reduce && ioOk) {
+    var groups = ['.sambutan > *', '.count .inner > *', '.sec-head', '.plaque', '.row', '.venue', '.hl-item', '.rsvp-copy > *', '.rsvp-grid > .card', '.foot .inner > *'];
+    var seen = [];
+    groups.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el, i, list) {
+        if (seen.indexOf(el) > -1) return;
+        seen.push(el);
+        el.classList.add('rv');
+        el.style.setProperty('--d', Math.min(i, 5) * 90 + 'ms');
+      });
+    });
+    document.querySelectorAll('.hl-item svg > *').forEach(function (n) {
+      if (!n.getTotalLength) return;
+      var len = Math.ceil(n.getTotalLength()) + 2;
+      n.style.strokeDasharray = len;
+      n.style.strokeDashoffset = len;
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        if (e.target.classList.contains('plaque')) countUp(e.target.querySelector('.tgl'));
+        io.unobserve(e.target);
+      });
+    }, { threshold: .15, rootMargin: '0px 0px -6% 0px' });
+    seen.forEach(function (el) { io.observe(el); });
+  }
+
+  /* Progres gulir dan parallax */
+  var bar = $('progress'), ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      var y = window.scrollY || 0;
+      var max = Math.max(1, root.scrollHeight - window.innerHeight);
+      bar.style.setProperty('--p', Math.min(1, y / max).toFixed(4));
+      if (!reduce && y < window.innerHeight * 1.6) hero.style.setProperty('--sy', y.toFixed(1));
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* Gulir halus (mouse) dan lompat ke bagian */
+  var smooth = !reduce && window.matchMedia('(pointer: fine)').matches;
+  var cur = 0, target = 0, running = false;
+  function maxY() { return Math.max(0, root.scrollHeight - window.innerHeight); }
+  function step() {
+    cur += (target - cur) * .11;
+    if (Math.abs(target - cur) < .5) { cur = target; running = false; }
+    window.scrollTo(0, cur);
+    if (running) requestAnimationFrame(step);
+  }
+  function goTo(y) {
+    if (!running) { cur = window.scrollY; running = true; requestAnimationFrame(step); }
+    target = Math.max(0, Math.min(maxY(), y));
+  }
+  if (smooth) {
+    root.classList.add('smooth');
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey || e.defaultPrevented || root.classList.contains('lock')) return;
+      if (e.target.closest && e.target.closest('textarea, input')) return;
+      e.preventDefault();
+      if (!running) { cur = window.scrollY; target = cur; running = true; requestAnimationFrame(step); }
+      target = Math.max(0, Math.min(maxY(), target + e.deltaY * (e.deltaMode === 1 ? 34 : 1)));
+    }, { passive: false });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href').slice(1), el = id && document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      var y = el.getBoundingClientRect().top + window.scrollY - 12;
+      if (smooth) goTo(y); else window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* Debu emas melayang di hero */
+  (function () {
+    var cv = $('dust');
+    if (reduce || !cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = 1, ps = [], visible = true, raf = 0;
+    function size() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.max(16, Math.min(46, Math.round(W / 26)));
+      while (ps.length < n) ps.push(spawn(true));
+      ps.length = n;
+    }
+    function spawn(any) {
+      return { x: Math.random() * W, y: any ? Math.random() * H : H + 10, r: .6 + Math.random() * 1.9,
+               v: .12 + Math.random() * .34, ph: Math.random() * 6.28, sw: 8 + Math.random() * 22, tw: .5 + Math.random() * 1.4 };
+    }
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < ps.length; i++) {
+        var p = ps[i];
+        p.y -= p.v;
+        var x = p.x + Math.sin(t / 1900 * p.tw + p.ph) * p.sw;
+        var a = (.25 + .55 * (.5 + .5 * Math.sin(t / 700 * p.tw + p.ph))) * Math.min(1, p.y / 90, (H - p.y) / 60 + .2);
+        if (p.y < -10) ps[i] = spawn(false);
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(212,187,130,' + Math.max(0, a).toFixed(3) + ')';
+        ctx.arc(x, p.y, p.r, 0, 6.2832);
+        ctx.fill();
+      }
+      if (visible && !document.hidden) raf = requestAnimationFrame(draw); else raf = 0;
+    }
+    function run() { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(draw); }
+    size();
+    window.addEventListener('resize', size);
+    document.addEventListener('visibilitychange', run);
+    if (ioOk) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; run(); }).observe(hero);
+    run();
+  })();
 
   update();
 })();
